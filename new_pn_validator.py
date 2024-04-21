@@ -97,7 +97,7 @@ follower_counts_collection=curator_data_db.FOLLOWER_COUNTS
 SpotifyConnectionInstance=SpotifyConnection()
 spotify_headers=SpotifyConnectionInstance.connect()
 
-count=0
+# count=0
 
 for item in audio_features_collection.find():
     print("---------")
@@ -175,8 +175,8 @@ for item in audio_features_collection.find():
     if flag==False:
         setStatus(playlist_id, status, 'I')
 
-    count=count+1
-    if count==10:
-        break
+    # count=count+1
+    # if count==10:
+    #     break
 
 print("Final violation dictionary   --- " , final_violation_dict)
