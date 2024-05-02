@@ -129,13 +129,17 @@ for item in audio_features_collection.find():
         print("Playlist is blacklisted")
         flag=False 
         addToViolationDict(playlist_id, 'blacklisted', '')
+        setStatus(playlist_id, status, 'I')
+        continue
         
 
     #get days_since_last_upload
     days_since_last_update=daysSinceLastUpdate(playlist_id)
     if days_since_last_update>90:
         flag=False
-        addToViolationDict(playlist_id, 'daysSinceLastUpload', values={'days_since_last_upload': days_since_last_update}), 
+        addToViolationDict(playlist_id, 'daysSinceLastUpload', values={'days_since_last_upload': days_since_last_update})
+        setStatus(playlist_id, status, 'I')
+        continue
         
 
     #get number_of_tracks
@@ -143,6 +147,8 @@ for item in audio_features_collection.find():
     if number_of_tracks<10 or number_of_tracks>360 :
         flag=False
         addToViolationDict(playlist_id, 'numberOfTracks', values={'number_of_tracks': number_of_tracks})
+        setStatus(playlist_id, status, 'I')
+        continue
         
 
     #get number_of_followers
@@ -150,18 +156,20 @@ for item in audio_features_collection.find():
     if number_of_followers<70:
         flag=False
         addToViolationDict(playlist_id, 'NumberOfFollowers', values={'number_of_followers': number_of_followers})
+        setStatus(playlist_id, status, 'I')
+        continue
         
     #     #get smoothness_score
     smoothness_score=calculateSmoothness(playlist_id)
     if smoothness_score<0.0009:
         flag=False
         addToViolationDict(playlist_id, 'smoothnessScore', values={'smoothness_score': smoothness_score})
+        setStatus(playlist_id, status, 'I')
+        continue
         
 
 
     #If code reaches here, it means all checks were passed and so invalid playlists can change to U. 
-    if flag==False:
-        setStatus(playlist_id, status, 'I')
     elif status=='I':
         setStatus(playlist_id, status, 'U')
     else:
@@ -170,9 +178,5 @@ for item in audio_features_collection.find():
     count=count+1
     if count==10:
         break
-
-    # count=count+1
-    # if count==10:
-    #     break
 
 print("Final violation dictionary   --- " , final_violation_dict)
