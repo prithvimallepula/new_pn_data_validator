@@ -176,7 +176,7 @@ for item in audio_features_collection.find():
         continue
 
     count=count+1
-    if count==10:
+    if count==5:
         break
 
 print("Final violation dictionary   --- " , final_violation_dict)
