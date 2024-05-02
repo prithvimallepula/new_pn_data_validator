@@ -22,6 +22,3 @@ ENV client_secret
 # Run app.py when the container launches
 CMD ["python", "new_pn_validator.py"]
 
-# export MONGO_URI="mongodb+srv://prithvi-dev:zJxvnJcrjbsObiKK@cluster0.yycvy.mongodb.net/?retryWrites=true&w=majority"
-# export client_id=5fa94dc6d979443cb23af73061b191b0
-# export client_secret=e2209552eb8b4614b74647ce0e2a06dd
