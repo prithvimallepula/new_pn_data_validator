@@ -159,21 +159,17 @@ for item in audio_features_collection.find():
         
 
 
-    #Verified playlists will stay verified unless made invalid by above checks
-    if status=='V' and flag==True:
-        print('Playlist is verified and passed all checks')
-        setStatus(playlist_id, status ,'V')
-
-    #Unverified playlists stay unverified if all checks are passed
-    if status=='U' and flag==True:
-        setStatus(playlist_id, status, 'U')
-
     #If code reaches here, it means all checks were passed and so invalid playlists can change to U. 
-    if status=='I' and flag==True:
-        setStatus(playlist_id, status, 'U')
-
     if flag==False:
         setStatus(playlist_id, status, 'I')
+    elif status=='I':
+        setStatus(playlist_id, status, 'U')
+    else:
+        continue
+
+    count=count+1
+    if count==10:
+        break
 
     # count=count+1
     # if count==10:
