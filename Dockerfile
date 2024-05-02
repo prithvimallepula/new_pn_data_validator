@@ -14,9 +14,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 # Define environment variable
-ENV MONGO_URI 
-ENV client_id 
-ENV client_secret 
+ARG MONGO_URI
+ARG client_id 
+ARG client_secret 
 # ENV API_KEY your_api_key_here
 
 # Run app.py when the container launches
