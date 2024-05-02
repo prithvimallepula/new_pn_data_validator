@@ -14,9 +14,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 # Define environment variable
-ENV MONGO_URI mongodb+srv://prithvi-dev:zJxvnJcrjbsObiKK@cluster0.yycvy.mongodb.net/?retryWrites=true&w=majority
-ENV client_id 5fa94dc6d979443cb23af73061b191b0
-ENV client_secret e2209552eb8b4614b74647ce0e2a06dd
+ENV MONGO_URI 
+ENV client_id 
+ENV client_secret 
 # ENV API_KEY your_api_key_here
 
 # Run app.py when the container launches
